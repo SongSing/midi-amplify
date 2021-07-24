@@ -1,0 +1,339 @@
+*
+{
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.clicky
+{
+    cursor: pointer;
+}
+
+.noclicky
+{
+    cursor: default !important;
+}
+
+.noselect
+{
+    user-select: none;
+}
+
+.numberInput-container
+{
+    overflow: hidden;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+
+    input.numberInput
+    {
+        &::-webkit-inner-spin-button
+        {
+            -webkit-appearance: none;
+        }
+
+        flex-grow: 1;
+        min-width: 0;
+    }
+
+    .numberInput-buttons
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+
+        button
+        {
+            padding: 2px 4px;
+            font-size: 0.6em;
+            flex-grow: 1;
+
+            &:hover
+            {
+                background-color: white;
+                color: black;
+            }
+
+            &:active
+            {
+                background-color: #ddd;
+            }
+        }
+    }
+}
+
+html, body, #root
+{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: white;
+    background-color: #221922;
+    overflow: hidden;
+}
+
+input, select
+{
+    font-size: 1em;
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    border: 0;
+    border-bottom: 1px solid #aaa;
+    padding: 4px 8px;
+
+    &:hover
+    {
+        background-color: rgba(255,255,255,0.2);
+    }
+
+    & > option
+    {
+        background-color: black;
+    }
+}
+
+select, input[type="checkbox"]
+{
+    cursor: pointer;
+}
+
+label
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+input[type="checkbox"]
+{
+    width: 1.05em;
+    height: 1.05em;
+}
+
+button:not(.nostyle)
+{
+    user-select: none;
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    border: 0px solid #555;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 8px;
+
+    &:hover
+    {
+        background-color: rgba(255,255,255,0.2);
+    }
+
+    &:active
+    {
+        background-color: #222;
+    }
+
+    &.iconButton
+    {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.4em;
+    
+        & > svg
+        {
+        }
+    }
+}
+
+button.nostyle
+{
+    font-size: 1em;
+    user-select: none;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+button.patreon
+{
+    background-color: darken(#e85b46, 5);
+
+    &:hover
+    {
+        background-color: lighten(#e85b46, 2);
+    }
+
+    &:active
+    {
+        background-color: darken(#e85b46, 12);
+    }
+}
+
+button.delete
+{
+    background-color: #9c2020;
+
+    &:hover
+    {
+        background-color: lighten(#9c2020, 7);
+    }
+
+    &:active
+    {
+        background-color: darken(#9c2020, 7);
+    }
+}
+
+.modal-backdrop
+{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .modal-content
+    {
+        min-width: 20%;
+        min-height: 20%;
+        background-color: #223;
+        padding: 16px 24px;
+        display: flex;
+        flex-direction: column;
+
+        h1
+        {
+            margin-top: 8px;
+            margin-bottom: 16px;
+        }
+
+        .bottomButtons
+        {
+            text-align: right;
+            margin-top: auto;
+            margin-bottom: 0;
+        }
+    }
+}
+
+.app
+{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(148deg, rgba(2,0,36,1) 0%, rgba(73,8,26,1) 0%, rgba(11,83,98,1) 100%);
+
+    .topRow
+    {
+        flex-grow: 1;
+        overflow: hidden;
+        position: relative;
+
+        & > *
+        {
+            border-right: 1px solid #aaa;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background-color: rgba(0,0,0,0.5);
+            overflow: hidden;
+            position: relative;
+            
+            h1
+            {
+                font-size: 1.5em;
+                margin: 0;
+            }
+        }
+    }
+
+    .piano
+    {
+        height: 100px;
+        width: 100%;
+        z-index: 1;
+        border-top: 1px solid black;
+        
+        .pianoKey
+        {
+            border-right: 1px solid black;
+            background-color: white;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            z-index: 0;
+            width: 1.3333333333333335%;
+
+            &.black
+            {
+                background-color: black;
+                height: 50%;
+                z-index: 1;
+                width: calc(1.3333333333333335% * 2/3);
+                border: 1px solid black;
+                border-top: 0;
+            }
+        }
+
+    }
+}
+
+.row
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.midis
+{
+    .midiList
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        overflow: auto;
+    }
+}
+
+.amplify
+{
+}
+
+.notes
+{
+    flex-grow: 1;
+
+    .noteList
+    {
+        overflow: auto;
+
+        .note
+        {
+            font-family: monospace;
+        }
+    }
+}
