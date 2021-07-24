@@ -59,17 +59,17 @@ export default class MenuBuilder
     buildDarwinTemplate(): MenuItemConstructorOptions[]
     {
         const subMenuAbout: DarwinMenuItemConstructorOptions = {
-            label: 'Electron',
+            label: 'MIDI Amplify',
             submenu: [
                 {
-                    label: 'About ElectronReact',
+                    label: 'About MIDI Amplify',
                     selector: 'orderFrontStandardAboutPanel:',
                 },
                 { type: 'separator' },
                 { label: 'Services', submenu: [] },
                 { type: 'separator' },
                 {
-                    label: 'Hide ElectronReact',
+                    label: 'Hide MIDI Amplify',
                     accelerator: 'Command+H',
                     selector: 'hide:',
                 },
@@ -160,31 +160,19 @@ export default class MenuBuilder
             label: 'Help',
             submenu: [
                 {
-                    label: 'Learn More',
-                    click() {
-                        shell.openExternal('https://electronjs.org');
-                    },
+                    label: "About",
+                    click: () =>
+                    {
+                        this.mainWindow.webContents.send("showAbout");
+                    }
                 },
                 {
-                    label: 'Documentation',
-                    click() {
-                        shell.openExternal(
-                            'https://github.com/electron/electron/tree/master/docs#readme'
-                        );
-                    },
-                },
-                {
-                    label: 'Community Discussions',
-                    click() {
-                        shell.openExternal('https://www.electronjs.org/community');
-                    },
-                },
-                {
-                    label: 'Search Issues',
-                    click() {
-                        shell.openExternal('https://github.com/electron/electron/issues');
-                    },
-                },
+                    label: "Report a Bug",
+                    click()
+                    {
+                        shell.openExternal("https://github.com/SongSing/midi-amplify/issues/new?assignees=&labels=bug&template=1-Bug_report.md");
+                    }
+                }
             ],
         };
             
